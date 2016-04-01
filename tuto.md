@@ -28,7 +28,7 @@ de ellos usa un ID distinto.
 
 > $docker attach IDcontainer
 
-# Ejecutar imagen abrir seudo tty 
+### Ejecutar imagen abrir seudo tty 
 
 > docker run -t -i imagen /bin/bash
 
