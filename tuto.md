@@ -10,7 +10,7 @@ de ellos usa un ID distinto.
 # Listar contenedores
 
 > $docker ps 
-este lista los que esten en ejecución
+\neste lista los que esten en ejecución
 > $docker ps -a
 lista todos los contenedores en el equipo
 
