@@ -7,12 +7,14 @@ de ellos usa un ID distinto.
 
 > $docker images
 
-# Listar contenedores
+# Listar contenedores en ejecución
 
 > $docker ps 
-\neste lista los que esten en ejecución
+
+# Listar todos los contenedores
+
 > $docker ps -a
-lista todos los contenedores en el equipo
+
 
 # Eliminar Contenedores
 
