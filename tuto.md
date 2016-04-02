@@ -41,12 +41,6 @@ puerto del equipo huesped y seguido de ":", el puerto de conexión del contenedo
 
 >$docker run -p 8069:8069 -p 8022:22 --name odoo -v /local/datastore:/host/datastore --link db:db -t odoo
 
-``
-
-
- 
-
-
 Enlaces de interes y que use para aprender sobre docker
 =======================================================
 
