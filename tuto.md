@@ -46,5 +46,7 @@ Enlaces de interes y que use para aprender sobre docker
 
 * [Instalación y Primeros Pasos con Docker](http://www.cristalab.com/tutoriales/instalacion-y-primeros-pasos-en-docker-c114081l/)
 * [Docker en debian x Ernesto Crespo](http://blog.crespo.org.ve/2015/12/uso-de-docker-en-debian-jessie-parte-1.html)
+* [configurar el contenedor de odoo v9](https://github.com/docker-library/docs/tree/master/odoo)
+
 
 
