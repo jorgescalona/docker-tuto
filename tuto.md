@@ -1,4 +1,4 @@
-# Sistematización del aprendizaje de docker
+# Documentación de la experiencia durante el aprendizaje de docker
 
 Ante todo es importante diferenciar entre contenedor, imagen e instancias de contenedores, cada uno
 de ellos usa un ID distinto.
@@ -24,7 +24,7 @@ de ellos usa un ID distinto.
 
 > $docker rmi IDimage
 
-### attachar un contenedor
+### hacer attach de un contenedor
 
 > $docker attach IDcontainer
 
@@ -41,7 +41,7 @@ crear las siguientes carpetas
 * mkdir postgresql
 * chmod 777 -R config/ sources/
 
-ahora levantamos postgres adaptado a este entorno 
+ahora levantamos postgres y odoo adaptado a este entorno 
 > $docker run -p 5436:5432 -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -v ~/odooVx/postgresql:/var/lib/postgresql/data --restart=always --name db postgres
 
 > $docker run -p 8069:8069 -p 8022:22 -v ~/odoo/odooVx/config:/etc/odoo -v ~/odooVx/sources:/mnt/extra-addons --name odoo --link db:db -t odoo 
