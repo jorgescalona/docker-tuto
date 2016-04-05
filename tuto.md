@@ -1,7 +1,7 @@
 # Documentación de la experiencia durante el aprendizaje de docker
 
 Ante todo es importante diferenciar entre contenedor, imagen e instancias de contenedores, cada uno
-de ellos usa un ID distinto.
+de ellos usa un ID distinto, por lo que debe ser cuidadoso en este aspecto.
 
 ### Listar imagenes
 
