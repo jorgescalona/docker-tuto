@@ -34,12 +34,12 @@ de ellos usa un ID distinto.
 
 ### Preparando el entorno para Odoo
 crear las siguientes carpetas
-> mkdir odooVx (donde Vx corresponde a la version de odoo)
-> cd odooVx
-> mkdir config
-> mkdir sources
-> mkdir postgresql
-> chmod 777 -R config/ sources/
+* mkdir odooVx (donde Vx corresponde a la version de odoo)
+* cd odooVx
+* mkdir config
+* mkdir sources
+* mkdir postgresql
+* chmod 777 -R config/ sources/
 
 ahora levantamos postgres adaptado a este entorno 
 > $docker run -p 5436:5432 -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -v ~/odooVx/postgresql:/var/lib/postgresql/data --restart=always --name db postgres
