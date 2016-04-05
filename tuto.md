@@ -32,14 +32,33 @@ de ellos usa un ID distinto.
 
 > docker run -t -i imagen /bin/bash
 
+### Preparando el entorno para Odoo
+crear las siguientes carpetas
+> mkdir odooVx (donde Vx corresponde a la version de odoo)
+> cd odooVx
+> mkdir config
+> mkdir sources
+> mkdir postgresql
+> chmod 777 -R config/ sources/
 
-### Ejemplo para un entorno de desarrollo de odoo v9
+ahora levantamos postgres adaptado a este entorno 
+> $docker run -p 5436:5432 -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -v ~/odooVx/postgresql:/var/lib/postgresql/data --restart=always --name db postgres
 
-lo primero es montar un contenedor de PostgreSQL con la opción -p q identificara el 
-puerto del equipo huesped y seguido de ":", el puerto de conexión del contenedor de la bd 
->$docker run -p 5436:5432 -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres
+> $docker run -p 8069:8069 -p 8022:22 -v ~/odoo/odooVx/config:/etc/odoo -v ~/odooVx/sources:/mnt/extra-addons --name odoo --link db:db -t odoo 
 
->$docker run -p 8069:8069 -p 8022:22 --name odoo -v /local/datastore:/host/datastore --link db:db -t odoo
+Las carpetas config se guardaran las configuraciones y en sources nuestros addons
+
+Al levantar con --restart=always docker se encarga de mantener siempre los servicios arriba, si reinicias el servidor los servicios se leventan solos
+
+### iniciar el servicio en modo interactivo 
+
+reemplazamos el -d por -ti -u root y agregando /bin/bash al final y borrando el --restart=always, es decir:
+
+> docker run -ti -u root --link db:db -p 127.0.0.1:8069:8069 -p 8022:22 -v ~/odooVx/config:/etc/odoo -v ~/odooVx/sources:/mnt/extra-addons -v ~/odooVx/data_dir:/var/lib/odoo --name odoo /bin/bash
+
+Luego correr odoo con:
+>runuser -u odoo openerp-server -- -c /etc/odoo/openerp-server.conf
+
 
 Enlaces de interes y que use para aprender sobre docker
 =======================================================
@@ -47,6 +66,8 @@ Enlaces de interes y que use para aprender sobre docker
 * [Instalación y Primeros Pasos con Docker](http://www.cristalab.com/tutoriales/instalacion-y-primeros-pasos-en-docker-c114081l/)
 * [Docker en debian x Ernesto Crespo](http://blog.crespo.org.ve/2015/12/uso-de-docker-en-debian-jessie-parte-1.html)
 * [configurar el contenedor de odoo v9](https://github.com/docker-library/docs/tree/master/odoo)
+* [Odoo Development Essentials Book traducción de BachacoVE](http://fundamentos-de-desarrollo-en-odoo.readthedocs.org/es/latest/index.html)
+* [Odoo Argentina buen post sobre dockerizacion](http://www.odooargentina.com/page/instalar-usando-docker)
 
 
 
